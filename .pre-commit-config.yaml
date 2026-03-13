@@ -6,4 +6,5 @@ repos:
     args:
       - --args=-recursive
   - id: terraform_validate
+  - id: terraform_tfsec
   - id: terraform_docs
