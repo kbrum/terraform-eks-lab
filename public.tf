@@ -4,7 +4,7 @@ resource "aws_subnet" "eks_subnet_public_1a" {
   availability_zone       = "${data.aws_region.current.region}a"
   map_public_ip_on_launch = true
   tags = merge(local.tags, {
-    Name                     = "awscourse-public-1a"
+    Name                     = "${var.project_name}-public-1a"
     "kubernetes.io/role/elb" = 1
   })
 }
@@ -16,7 +16,7 @@ resource "aws_subnet" "eks_subnet_public_1b" {
   map_public_ip_on_launch = true
   tags = merge(local.tags,
     {
-      Name                     = "awscourse-public-1b"
+      Name                     = "${var.project_name}-public-1b"
       "kubernetes.io/role/elb" = 1
   })
 }
