@@ -20,3 +20,27 @@ resource "aws_subnet" "eks_subnet_public_1b" {
       "kubernetes.io/role/elb" = 1
   })
 }
+
+resource "aws_route_table" "eks-lab-public-rt" {
+  vpc_id = aws_vpc.eks_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.eks-lab-igw.id
+  }
+
+  tags = merge(local.tags,
+    {
+      Name = "${var.project_name}-pub-rt"
+  })
+}
+
+resource "aws_route_table_association" "pub-ass-rt-1a" {
+  subnet_id      = aws_subnet.eks_subnet_public_1a.id
+  route_table_id = aws_route_table.eks-lab-public-rt.id
+}
+
+resource "aws_route_table_association" "pub-ass-rt-1b" {
+  subnet_id      = aws_subnet.eks_subnet_public_1b.id
+  route_table_id = aws_route_table.eks-lab-public-rt.id
+}
