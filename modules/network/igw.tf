@@ -1,6 +1,6 @@
 resource "aws_internet_gateway" "eks_lab_igw" {
   vpc_id = aws_vpc.eks_vpc.id
-  tags = merge(local.tags, {
+  tags = merge(var.tags, {
     Name = "${var.project_name}-igw"
   })
 }
