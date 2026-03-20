@@ -1,5 +1,5 @@
-resource "aws_eks_cluster" "example" {
-  name = "${var.project_name}-cluster"
+resource "aws_eks_cluster" "eks_cluster" {
+  name = "${var.project_name}-cluster-dev"
 
   access_config {
     authentication_mode = "API"
