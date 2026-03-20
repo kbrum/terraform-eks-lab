@@ -9,13 +9,21 @@ resource "aws_eks_cluster" "example" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.az1.id,
-      aws_subnet.az2.id,
-      aws_subnet.az3.id,
+      var.subnet_pub_1a,
+      var.subnet_pub_1b,
     ]
+    endpoint_public_access  = true
+    endpoint_private_access = true
   }
 
   depends_on = [
     aws_iam_role_policy_attachment.eks_cluster_role_attachment
   ]
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.project_name}-cluster"
+    }
+  )
 }
