@@ -21,3 +21,7 @@ module "eks_nodes" {
   subnet_priv_1a = module.eks_network.subnet_priv_1a
   subnet_priv_1b = module.eks_network.subnet_priv_1b
 }
+
+module "eks_load_balancer" {
+  source = "./modules/load-balancer"
+}
