@@ -7,3 +7,8 @@ variable "tags" {
   type        = map(any)
   description = "Project tags"
 }
+
+variable "oidc" {
+  type        = string
+  description = "OIDC url to use in role"
+}
