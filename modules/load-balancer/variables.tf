@@ -12,3 +12,8 @@ variable "oidc" {
   type        = string
   description = "OIDC url to use in role"
 }
+
+variable "cluster_name" {
+  type        = string
+  description = "Cluster name"
+}
